@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<body class="bok">
+  <div class="search">
+    <form action="#">
+      <input type="checkbox" class="input-check" placeholder="light">
+     <h1>Check khodam</h1>
+     <p>masukkan nama anda</p>
+     <div class="input-line"></div>
+     <input type="text" id="search" placeholder="masukkan nama">
+     <button id="btn-search">check</button>
+     <p id="result">NAMA - KHODAM KAMU (nama khodam)</p>
+    </form>
+  </div>
+  <div class="light"></div>
+  <style type="text/css">
+body {
+  font-family: Arial, sans-serif;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.search {
+  background-color: hsl(249.5,0%,42.4%);
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+.input-check:checked~.search{
+  background-color: #00f7ff;
+  box-shadow: 0 0 10px #00f7ff;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.input-check:checked~h1 {
+    color: #00f7ff;
+    text-shadow:
+        0 0 15px #00f7ff,
+        0 0 30px #00f7ff;
+}
+
+input {
+  padding: 10px;
+  margin-bottom: 10px;
+  width: calc(100% - 22px);
+  box-sizing: border-box;
+  border-radius: 20px;
+  background-color: black;
+}
+
+.input-check:checked~input {
+    background-color: #00f7ff;
+    box-shadow:0 0 15px #00f7ff,
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover{
+  background-color: #0056b3;
+}
+
+.input-check:checked~button {
+    background: #00f7ff;
+    box-shadow: 0 0 10px #00f7ff;
+}
+
+.input-line {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2.5px;
+    background: #fff;
+    transition: .5s ease;
+}
+
+.input-check:checked~.input-line {
+    background: #00f7ff;
+    box-shadow: 0 0 10px #00f7ff;
+}
+
+#result {
+  margin-top: 20px;
+  font-size: 1.2em;
+}
+
+.input-check:checked~p {
+    color: #00f7ff;
+    text-shadow: 0 0 10px #00f7ff;
+}
+
+  </style>
+  <script>
+    function cekKhodam(event){
+  event.preventDefault();
+  let nama = $('#search').val();
+  //alert("Testing")
+  if(nama == ''){
+    alert('Nama Tidak Boleh Kosong!')
+  }else{
+    let status = [
+      'isi',
+      'kosong'
+    ]
+     const randomStatus = Math.floor(Math.random() * status.length)
+     if(randomStatus == 0){
+       let khodam = [
+         'toke kayang',
+         'ban mobil',
+         'udin slebew',
+         'kipas angin',
+         'tuyul mulet',
+         'kadal mewing',
+         'jam dinding',
+         'tikus sigma',
+         'baygon',
+         'kulkas',
+         'ban motor',
+         'ganjar',
+         'kuda pony',
+         'gajah terbang',
+         'gemplong',
+         'ketan item',
+         'galon sigma',
+         'motor supra',
+         'undur-undur',
+         'alok hamil',
+         'tai kering',
+         'sayur sop',
+         'leluhur bokep'
+         ];
+         const random = Math.floor(Math.random() * khodam.length);
+         $('#result').html(`${nama.toUpperCase()} - khodam kamu (${khodam[random]})`);
+         $('#search').val('');
+     }else{
+         $('#result').html(`${nama.toUpperCase()} - KOSONG`);
+         $('#search').val('');
+     }
+  }
+}
+
+$(document).ready(function(){
+  $('#btn-search').click(cekKhodam);
+})
+  </script>
+</body>
+</html>
